@@ -1,4 +1,4 @@
-# 🔍 Multimodal Visual Product Search & Counterfeit Listing Detection
+# Multimodal Visual Product Search & Counterfeit Listing Detection
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python"/>
@@ -17,23 +17,23 @@
 
 ---
 
-## 🧩 The Problem
+## The Problem
 
 Large e-commerce platforms like Amazon face three expensive, interconnected problems at scale:
 
 | Problem | Real-world Cost |
 |---|---|
-| 🔎 Customers want to search by photo, not keywords | Lost sales when text search fails |
-| 📋 Counterfeit sellers copy product images & titles with minor tweaks | Brand damage, customer fraud |
-| 🔁 Same product listed by different sellers with different titles | Catalog pollution, price arbitrage |
+| Customers want to search by photo, not keywords | Lost sales when text search fails |
+| Counterfeit sellers copy product images & titles with minor tweaks | Brand damage, customer fraud |
+| Same product listed by different sellers with different titles | Catalog pollution, price arbitrage |
 
 All three share one root cause: **no reliable way to measure when two products are visually or semantically the same at scale.** This project solves all three with a single unified system.
 
 ---
 
-## 🎯 Key Results
+## Key Results
 
-### ✅ Visual Search — Top-5 nearest neighbours by multimodal similarity
+### Visual Search — Top-5 nearest neighbours by multimodal similarity
 
 > Query: *"Amazon Brand - Solimo Designer Half Fill Hard Back Case Mobile Cover for Nokia 6.1 Plus"*
 
@@ -45,7 +45,7 @@ The system correctly retrieves visually similar phone case designs (same form fa
 
 ---
 
-### 🚨 Near-Duplicate / Counterfeit Detection — Real flagged pairs
+### Near-Duplicate / Counterfeit Detection — Real flagged pairs
 
 **68 potential duplicate/counterfeit listing pairs detected out of 3,171 products (2.14%)**
 
@@ -65,7 +65,7 @@ The system correctly retrieves visually similar phone case designs (same form fa
 
 ---
 
-### 📊 Ablation Study — Image-only vs Text-only vs Multimodal (5-fold CV)
+### Ablation Study — Image-only vs Text-only vs Multimodal (5-fold CV)
 
 <p align="center">
   <img src="image_3.png" width="55%"/>
@@ -83,7 +83,7 @@ This validates the core hypothesis: images capture visual similarity, text captu
 
 ---
 
-### 🔥 Grad-CAM — Explainability: what drove the match?
+### Grad-CAM — Explainability: what drove the match?
 
 <p align="center">
   <img src="image_4.png" width="65%"/>
@@ -93,7 +93,7 @@ Grad-CAM highlights which pixel regions of a product image the model attends to 
 
 ---
 
-## ⚙️ System Architecture
+## System Architecture
 
 ```
 Product Image + Title
@@ -123,7 +123,7 @@ Search        Detection    Study + Grad-CAM
 
 ---
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 | Component | Technology | Why |
 |---|---|---|
@@ -136,7 +136,7 @@ Search        Detection    Study + Grad-CAM
 
 ---
 
-## 🗂️ Dataset
+## Dataset
 
 **[Amazon Berkeley Objects (ABO)](https://amazon-berkeley-objects.s3.amazonaws.com/index.html)** — released by Amazon & UC Berkeley at CVPR 2022
 
@@ -161,7 +161,7 @@ This project samples **3,171 products** across **15 product categories** for fas
 
 ---
 
-## 🚀 Run It Yourself
+## Run It Yourself
 
 **Option 1 — Google Colab (recommended, free GPU):**
 1. Open `Visual_Search_Duplicate_Detection.ipynb` in [Google Colab](https://colab.research.google.com)
@@ -178,7 +178,7 @@ python app.py
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 ├── Visual_Search_Duplicate_Detection.ipynb   # Main notebook — run this
@@ -205,7 +205,7 @@ python app.py
 
 ---
 
-## 🔬 Key Design Decisions
+## Key Design Decisions
 
 **Why k-NN for the ablation, not a neural classifier?**
 k-NN with cosine distance is a *direct* measure of embedding quality — it uses the exact same similarity metric as the search system. A separate classifier would conflate "is the embedding good" with "is the classifier good," making the ablation less clean.
@@ -221,7 +221,7 @@ Chosen by inspecting the empirical distribution of all pairwise cosine similarit
 
 ---
 
-## 📈 Production Scaling Plan
+## Production Scaling Plan
 
 | Challenge | Prototype | Production Approach |
 |---|---|---|
@@ -233,13 +233,13 @@ Chosen by inspecting the empirical distribution of all pairwise cosine similarit
 
 ---
 
-## ⚠️ Honest Limitations
+## Honest Limitations
 
 Embedding similarity alone is not sufficient for production counterfeit detection. Two items can have near-identical embeddings but be legitimate size or colour variants of the same product (which are *not* counterfeits). A production system would combine this similarity signal with seller-identity features, price-anomaly detection, and OCR on product packaging — using this as one component in an ensemble, not a standalone detector.
 
 ---
 
-## 📚 References
+## References
 
 - Collins et al., *"ABO: Dataset and Benchmarks for Real-World 3D Object Understanding"*, CVPR 2022
 - Radford et al., *"Learning Transferable Visual Models From Natural Language Supervision"* (CLIP), ICML 2021
@@ -248,14 +248,6 @@ Embedding similarity alone is not sufficient for production counterfeit detectio
 
 ---
 
-## 👤 Author
-
-**Snehil** — SRMIST, Department of Computational Intelligence
-
-*Built for the Amazon ML Summer School application.*
-
----
-
 <p align="center">
-  If this was useful, consider leaving a ⭐ — it helps others find the project.
+  If this was useful, consider leaving a star — it helps others find the project.
 </p>
