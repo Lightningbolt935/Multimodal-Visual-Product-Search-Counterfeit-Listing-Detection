@@ -1,0 +1,12 @@
+open_clip_torch
+torch
+torchvision
+faiss-cpu
+gradio
+scikit-learn
+pandas
+numpy
+matplotlib
+tqdm
+grad-cam
+Pillow
